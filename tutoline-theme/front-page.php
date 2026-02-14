@@ -26,6 +26,7 @@ get_header();
     <aside class="hero-side">
       <article class="holo-card"><h3><?php esc_html_e('3D Code Matrix', 'tutoline'); ?></h3><p><?php esc_html_e('Visual secure code intelligence for advanced labs.', 'tutoline'); ?></p></article>
       <article class="holo-card"><h3><?php esc_html_e('Neural Threat Graph', 'tutoline'); ?></h3><p><?php esc_html_e('Attack path mapping and live defense simulations.', 'tutoline'); ?></p></article>
+      <article class="holo-card"><h3><?php esc_html_e('Career Radar', 'tutoline'); ?></h3><p><?php esc_html_e('AI-powered skill roadmap for faster outcomes.', 'tutoline'); ?></p></article>
     </aside>
   </section>
 
@@ -90,7 +91,7 @@ get_header();
           endwhile;
       else :
           ?>
-          <article class="glass"><h3>Vulnerability Assessment (VA)</h3><p><?php esc_html_e('Add services from WordPress Admin → Services.', 'tutoline'); ?></p></article>
+          <article class="glass"><h3><?php esc_html_e('Vulnerability Assessment (VA)', 'tutoline'); ?></h3><p><?php esc_html_e('Add services from WordPress Admin → Services.', 'tutoline'); ?></p></article>
       <?php endif; wp_reset_postdata(); ?>
     </div>
   </section>
@@ -104,20 +105,33 @@ get_header();
     </div>
   </section>
 
+  <section class="section" id="faq">
+    <div class="section-title"><h2><?php esc_html_e('Frequently Asked Questions', 'tutoline'); ?></h2></div>
+    <div class="faq-list">
+      <details class="glass"><summary><?php esc_html_e('Is Tutoline beginner-friendly?', 'tutoline'); ?></summary><p><?php esc_html_e('Yes. We provide beginner-to-advanced tracks with progressive labs and mentor guidance.', 'tutoline'); ?></p></details>
+      <details class="glass"><summary><?php esc_html_e('Do you provide certifications?', 'tutoline'); ?></summary><p><?php esc_html_e('Yes. Every completed track includes a certificate and practical project evidence.', 'tutoline'); ?></p></details>
+      <details class="glass"><summary><?php esc_html_e('Can enterprises buy training and services together?', 'tutoline'); ?></summary><p><?php esc_html_e('Absolutely. Enterprise plans combine team training with VA/PT, AppSec, and code review services.', 'tutoline'); ?></p></details>
+    </div>
+  </section>
+
   <section class="section" id="blog">
     <div class="section-title"><h2><?php esc_html_e('Blog & Resources', 'tutoline'); ?></h2></div>
     <div class="resource-grid">
       <?php
       $posts = new WP_Query(['post_type' => 'post', 'posts_per_page' => 3]);
       if ($posts->have_posts()) :
-          while ($posts->have_posts()) : $posts->the_post(); ?>
-            <article class="glass">
-              <h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
-              <p><?php echo esc_html(wp_trim_words(get_the_excerpt(), 20)); ?></p>
-            </article>
-          <?php endwhile;
-      else : ?>
-        <article class="glass"><h3><?php esc_html_e('Publish blog posts to show resources here.', 'tutoline'); ?></h3></article>
+          while ($posts->have_posts()) :
+              $posts->the_post();
+              ?>
+              <article class="glass">
+                <h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
+                <p><?php echo esc_html(wp_trim_words(get_the_excerpt(), 20)); ?></p>
+              </article>
+              <?php
+          endwhile;
+      else :
+          ?>
+          <article class="glass"><h3><?php esc_html_e('Publish blog posts to show resources here.', 'tutoline'); ?></h3></article>
       <?php endif; wp_reset_postdata(); ?>
     </div>
   </section>
